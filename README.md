@@ -10,7 +10,7 @@ A simple telemetry sidecar deployment might be a reasonable aim for a short proj
 
 ## Organization
 
-[Issues](https://github.com/elixir-cloud-aai/cloud-telemetry/issues)
-[Board](https://github.com/orgs/elixir-cloud-aai/projects/21)
-Communication: ELIXIR Cloud Slack Channel, Topic #telemetry
+* [Issues](https://github.com/elixir-cloud-aai/cloud-telemetry/issues)
+* [Project Board](https://github.com/orgs/elixir-cloud-aai/projects/21)
+* Communication: ELIXIR Cloud Slack Channel, Topic #telemetry
 
