@@ -15,11 +15,18 @@ A simple telemetry sidecar deployment might be a reasonable aim for a short proj
 * Communication: ELIXIR Cloud Slack Channel, Topic #telemetry
 
 ## Steps to run:
-- create a venv
-- `pip install -r requirements.txt`
-- `source cloud-telemetry/bin/activate`
-- `uvicorn main:app`
-- `docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector`
-- 
 
-<!-- source cloud-telemetry/bin/activate -->
+### Create virtual environment
+`python3 -m venv cloud-telemetry`
+
+### Activate venv
+`source cloud-telemetry/bin/activate`
+
+### Install python requirements
+`pip install -r requirements.txt`
+
+### Run starlette application
+`uvicorn main:app`
+
+### Run open-telemetry collector
+`docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector`

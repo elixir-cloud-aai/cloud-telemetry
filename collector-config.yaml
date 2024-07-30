@@ -5,11 +5,8 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-    
-  # problem here : not able to connect it with jaeger
-  # otlp/jaeger:
-  #   endpoint: jaeger-server:4317
 
+# Currently, it logs all the traces and metrics to stdout.
 exporters:
   debug:
     verbosity: detailed
