@@ -14,3 +14,12 @@ A simple telemetry sidecar deployment might be a reasonable aim for a short proj
 * [Project Board](https://github.com/orgs/elixir-cloud-aai/projects/21)
 * Communication: ELIXIR Cloud Slack Channel, Topic #telemetry
 
+## Steps to run:
+- create a venv
+- `pip install -r requirements.txt`
+- `source cloud-telemetry/bin/activate`
+- `uvicorn main:app`
+- `docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector`
+- 
+
+<!-- source cloud-telemetry/bin/activate -->
