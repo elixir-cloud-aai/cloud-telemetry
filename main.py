@@ -47,4 +47,4 @@ app = Starlette(
     ]
 )
 
-OpenTelemetryInstrumentor.instrument_app(app)
+OpenTelemetryInstrumentor.instrument_app(app, service_name="ga4gh")

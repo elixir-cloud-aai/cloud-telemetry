@@ -28,5 +28,18 @@ A simple telemetry sidecar deployment might be a reasonable aim for a short proj
 ### Run starlette application
 `uvicorn main:app`
 
-### Run open-telemetry collector
+### Initiate components
+`docker compose up`
+<!-- ### Run open-telemetry collector
 `docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector`
+
+OR
+
+### with jaeger collector:
+`docker run --name jaeger \ 
+  -e COLLECTOR_OTLP_ENABLED=true \
+  -p 16686:16686 \
+  -p 4317:4317 \
+  -p 4318:4318 \
+  jaegertracing/all-in-one:latest
+` -->
