@@ -67,7 +67,7 @@ jobs:
             --exclude="*.lock" \
             --exclude="*.json" \
             --exclude="*.md" \
-            src/ tests/ .github/
+            cloud-telemetry/ tests/ .github/
 
   type-check:
     name: Type check
