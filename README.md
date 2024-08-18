@@ -8,9 +8,30 @@
 [![Ruff](https://img.shields.io/badge/linter%20&%20formatter-ruff-000000.svg)](https://docs.astral.sh/ruff/)
 [![Safety](https://img.shields.io/badge/security-safety-orange.svg)](https://safetycli.com/product/safety-cli)
 
-# cloud-telemetry
+# Integrating Telemetry into GA4GH API-powered federated microservice networks
 
-Integrating Telemetry into GA4GH API-powered federated microservice networks
+The Global Alliance for Genomics and Health (GA4GH) defines various web APIs for
+federated computing solutions that are well suited for the microservice
+architecture pattern. The ELIXIR Cloud & AAI Driver Project of the GA4GH is
+actively developing a GA4GH API-powered cloud environment based on this
+principle. The GA4GH Cloud Telemetry Project aims to provide a starting point
+for instrumentation and tracing of GA4GH Cloud Components / Microservices.
+
+In this project, you would design and implement a solution that adds rich
+telemetry support to the ELIXIR Cloud federated service. The primary goal would
+be deployment artifacts (e.g., Terraform/OpenTofu) that deploy both our core
+services, as well as telemetry services at our fragmented compute centers at
+multiple locations (Kubernetes, OpenShift, OpenStack/VMs), as well as on one or
+more commercial cloud providers. An ideal solution would be easily extensible to
+apply to GA4GH-powered clouds in general, i.e., proposals that use abstractions
+offered by GA4GH APIs, where applicable/reasonable, are preferred.
+
+A simple telemetry sidecar deployment might be a reasonable aim for a short
+project, whereas a generic solution with various connections to specific GA4GH
+APIs (e.g., integration with the Service Info / Service Registry API) might be
+suitable for a medium or even long project. Note that the exclusive use of free
+and open source tooling for any used dependencies (e.g., OpenTelemetry) is a
+requirement.
 
 ## Table of Contents
 
@@ -159,39 +180,10 @@ To get in touch with us, please use one of the following routes:
 - For private/personal issues, more involved communication, or if you would like
   to join our team as a regular contributor, you can either join our
   [chat board][badge-chat-url] or [email] the community leaders.
-
-[![logo-elixir]][elixir] [![logo-elixir-cloud-aai]][elixir-cloud-aai]
-
-# Integrating Telemetry into GA4GH API-powered federated microservice networks
-
-The Global Alliance for Genomics and Health (GA4GH) defines various web APIs for
-federated computing solutions that are well suited for the microservice
-architecture pattern. The ELIXIR Cloud & AAI Driver Project of the GA4GH is
-actively developing a GA4GH API-powered cloud environment based on this
-principle. The GA4GH Cloud Telemetry Project aims to provide a starting point
-for instrumentation and tracing of GA4GH Cloud Components / Microservices.
-
-In this project, you would design and implement a solution that adds rich
-telemetry support to the ELIXIR Cloud federated service. The primary goal would
-be deployment artifacts (e.g., Terraform/OpenTofu) that deploy both our core
-services, as well as telemetry services at our fragmented compute centers at
-multiple locations (Kubernetes, OpenShift, OpenStack/VMs), as well as on one or
-more commercial cloud providers. An ideal solution would be easily extensible to
-apply to GA4GH-powered clouds in general, i.e., proposals that use abstractions
-offered by GA4GH APIs, where applicable/reasonable, are preferred.
-
-A simple telemetry sidecar deployment might be a reasonable aim for a short
-project, whereas a generic solution with various connections to specific GA4GH
-APIs (e.g., integration with the Service Info / Service Registry API) might be
-suitable for a medium or even long project. Note that the exclusive use of free
-and open source tooling for any used dependencies (e.g., OpenTelemetry) is a
-requirement.
-
-## Organization
-
-- [Issues](https://github.com/elixir-cloud-aai/cloud-telemetry/issues)
 - [Project Board](https://github.com/orgs/elixir-cloud-aai/projects/21)
 - Communication: ELIXIR Cloud Slack Channel, Topic #telemetry
+
+[![logo-elixir]][elixir] [![logo-elixir-cloud-aai]][elixir-cloud-aai]
 
 [badge-chat-url]: https://join.slack.com/t/elixir-cloud/shared_invite/enQtNzA3NTQ5Mzg2NjQ3LTZjZGI1OGQ5ZTRiOTRkY2ExMGUxNmQyODAxMDdjM2EyZDQ1YWM0ZGFjOTJhNzg5NjE0YmJiZTZhZDVhOWE4MWM
 [badge-license-url]: http://www.apache.org/licenses/LICENSE-2.0

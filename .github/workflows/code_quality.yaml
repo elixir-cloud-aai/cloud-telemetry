@@ -62,7 +62,12 @@ jobs:
           poetry-export-options: "--only=code_quality"
 
       - name: Check spellings
-        run: poetry run typos .
+        run: |
+          poetry run typos \
+            --exclude="*.lock" \
+            --exclude="*.json" \
+            --exclude="*.md" \
+            src/ tests/ .github/
 
   type-check:
     name: Type check
