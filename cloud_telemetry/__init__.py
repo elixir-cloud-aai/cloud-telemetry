@@ -1,1 +1,1 @@
-"""This package contains module for the cloud_telemetry."""
+"""Main package for cloud_telemetry"""

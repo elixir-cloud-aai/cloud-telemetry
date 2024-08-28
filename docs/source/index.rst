@@ -1,4 +1,4 @@
-Welcome to cloud_telemetry's documentation!
+Welcome to Cloud Telemetry's documentation!
 ===========================================================
 
 .. toctree::

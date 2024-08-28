@@ -17,7 +17,7 @@ classifiers = [
 description = "Integrating Telemetry into GA4GH API-powered federated microservice networks"
 license = "Apache-2.0"
 maintainers = ["ELIXIR Cloud AAI <cloud-service@elixir-europe.org>"]
-name = "cloud_telemetry"
+name = "cloud-telemetry"
 readme = "README.md"
 repository = "https://github.com/elixir-cloud-aai/cloud-telemetry"
 version = "0.1.0"
@@ -73,7 +73,7 @@ bandit = ">=1.7.8,<2.0.0"
 safety = ">=3.2.0,<4.0.0"
 
 [tool.poetry.scripts]
-cloud_telemetry = "cloud_telemetry.main:main"
+cloud-telemetry = "cloud_telemetry.main:main"
 
 [tool.ruff]
 indent-width = 4
