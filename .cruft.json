@@ -8,7 +8,7 @@
       "author_email": "cloud-service@elixir-europe.org",
       "development_status": "1 - Planning",
       "short_description": "Integrating Telemetry into GA4GH API-powered federated microservice networks",
-      "project_name": "cloud-telemetry",
+      "project_name": "cloud_telemetry",
       "project_slug": "cloud_telemetry",
       "github_username": "elixir-cloud-aai",
       "python_version": "3.11",
