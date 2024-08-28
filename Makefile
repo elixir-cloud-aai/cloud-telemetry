@@ -115,7 +115,7 @@ tc: type-check
 update:
 	@echo "\nUpdating the template +++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
 	@echo "Using latest version from remote: https://github.com/elixir-cloud-aai/cookiecutter-python."
-	@poetry run cruff update -y
+	@poetry run cruft update -y
 
 .PHONY: u
 u: update
