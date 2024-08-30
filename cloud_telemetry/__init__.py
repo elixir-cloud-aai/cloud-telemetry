@@ -1,1 +1,1 @@
-"""Main package for cloud_telemetry"""
+"""Main package for cloud_telemetry."""
