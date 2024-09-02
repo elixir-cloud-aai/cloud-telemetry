@@ -5,20 +5,20 @@ from starlette.applications import Starlette
 from cloud_telemetry.middleware import OpenTelemetryInstrumentor
 
 
-def init_middleware(app: Starlette):
-    """Initialize middleware for the Starlette application.
+def init_middleware(app: Starlette, service_name: str = "ga4gh"):
+    """Initialize OpenTelemetry middleware for the Starlette application.
 
     Args:
         app (Starlette): The Starlette application instance to instrument.
+        service_name (str): The name of the service for tracing.
 
     Raises:
-        ValueError: If the application instance is not provided or is invalid.
+        Exception: If there is an error setting up tracing or metrics providers.
     """
     try:
-        OpenTelemetryInstrumentor.instrument_app(app, service_name="ga4gh")
-
+        OpenTelemetryInstrumentor.instrument_app(app, service_name)
     except Exception as e:
-        # Log the exception or handle it as necessary
+        # Handle the exception as necessary
         print(f"Failed to instrument the app with OpenTelemetry: {e}")
 
 

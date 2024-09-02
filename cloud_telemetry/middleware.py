@@ -18,39 +18,32 @@ class OpenTelemetryInstrumentor:
     @staticmethod
     def instrument_app(
         app: Starlette,
-        service_name: str = "ga4gh",
+        service_name: str,
+        enable_tracing: bool = True,
+        enable_metrics: bool = True,
     ):
         """Instruments a Starlette application with OpenTelemetry.
 
         Args:
             app (Starlette): The Starlette application instance to be instrumented.
             service_name (str): The name of the service for tracing and metrics.
-            Default is "ga4gh".
+            enable_tracing (bool): Whether to enable tracing. Default is True.
+            enable_metrics (bool): Whether to enable metrics. Default is True.
 
         Raises:
-            ValueError: If the provided app is not a Starlette instance.
             RuntimeError: If there is an error setting up tracing or metrics providers.
         """
         try:
             # Set up OpenTelemetry resource with the service name.
             resource = Resource(attributes={SERVICE_NAME: service_name})
 
-            # Set up the trace provider and exporter for sending trace data.
-            trace_provider = TracerProvider(resource=resource)
-            span_processor = BatchSpanProcessor(
-                OTLPSpanExporter()
-            )  # Exporter for traces.
-            trace_provider.add_span_processor(span_processor)
-            trace.set_tracer_provider(trace_provider)  # Set the global tracer provider.
+            # Set up tracing if enabled.
+            if enable_tracing:
+                OpenTelemetryInstrumentor._setup_tracing(resource)
 
-            # Set up the metric provider and exporter for sending metric data.
-            metric_reader = PeriodicExportingMetricReader(
-                OTLPMetricExporter()
-            )  # Exporter for metrics.
-            meter_provider = MeterProvider(
-                resource=resource, metric_readers=[metric_reader]
-            )
-            metrics.set_meter_provider(meter_provider)  # Set the global meter provider.
+            # Set up metrics if enabled.
+            if enable_metrics:
+                OpenTelemetryInstrumentor._setup_metrics(resource)
 
             # Instrument the Starlette app with the configured tracing and metrics.
             StarletteInstrumentor().instrument_app(app)
@@ -59,3 +52,20 @@ class OpenTelemetryInstrumentor:
             # Raise an exception with a descriptive error message
             # if instrumentation fails.
             raise RuntimeError(f"Failed to instrument the Starlette app: {e}") from e
+
+    @staticmethod
+    def _setup_tracing(resource: Resource):
+        """Set up tracing with OpenTelemetry."""
+        trace_provider = TracerProvider(resource=resource)
+        span_processor = BatchSpanProcessor(OTLPSpanExporter())
+        trace_provider.add_span_processor(span_processor)
+        trace.set_tracer_provider(trace_provider)
+
+    @staticmethod
+    def _setup_metrics(resource: Resource):
+        """Set up metrics with OpenTelemetry."""
+        metric_reader = PeriodicExportingMetricReader(OTLPMetricExporter())
+        meter_provider = MeterProvider(
+            resource=resource, metric_readers=[metric_reader]
+        )
+        metrics.set_meter_provider(meter_provider)
