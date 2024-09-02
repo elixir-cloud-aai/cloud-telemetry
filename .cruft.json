@@ -1,0 +1,23 @@
+{
+  "template": "https://github.com/elixir-cloud-aai/cookiecutter-python.git",
+  "commit": "d8b9cf3f288d0144f826181f18a5521285193142",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "ELIXIR Cloud AAI",
+      "author_email": "cloud-service@elixir-europe.org",
+      "development_status": "1 - Planning",
+      "short_description": "Integrating Telemetry into GA4GH API-powered federated microservice networks",
+      "project_name": "Cloud Telemetry",
+      "project_name_dashed": "cloud-telemetry",
+      "project_name_underscored": "cloud_telemetry",
+      "github_username": "elixir-cloud-aai",
+      "python_version": "3.11",
+      "add_script": "y",
+      "year": "2024",
+      "add_pypi_release_ci": "y",
+      "_template": "https://github.com/elixir-cloud-aai/cookiecutter-python.git"
+    }
+  },
+  "directory": null
+}

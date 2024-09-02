@@ -1,0 +1,55 @@
+---
+name: Update project structure
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"  # Every Monday at 2am
+
+jobs:
+  update-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up environment
+        uses: ./.github/actions/setup/poetry
+        with:
+          os: ${{ job.os }}
+          python-version: '3.11'
+          poetry-install-options: "--only=misc --no-root"
+          poetry-export-options: "--only=misc"
+
+      - name: Update project structure
+        run: |
+          cruft update -y
+
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
+      - name: Apply additional changes and fixes
+        if: steps.changes.outputs.changed == 1
+        run: |
+          poetry lock --no-update
+          poetry install
+          pre-commit run --all-files
+
+      - name: Get new template version
+        if: steps.changes.outputs.changed == 1
+        run: |
+          COMMIT_HASH=$(cat .cruft.json | jello -r "_['commit'][:8]")
+          echo "TEMPLATE_COMMIT=${COMMIT_HASH}" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 1
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.AUTO_UPDATE_GITHUB_TOKEN }}
+          commit-message: >-
+            chore: update project structure to ${{ env.TEMPLATE_COMMIT }}
+          title: "chore: auto-sync cookiecutter template"
+          body: ""
+          branch: chore/cookiecutter-pypackage
+          delete-branch: true
+...
