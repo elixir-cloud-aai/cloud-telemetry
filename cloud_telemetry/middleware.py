@@ -15,25 +15,36 @@ from starlette.applications import Starlette
 class OpenTelemetryInstrumentor:
     """Instruments a Starlette application with OpenTelemetry."""
 
-    @staticmethod
+    default_tracing = True
+    default_metrics = True
+
+    @classmethod
     def instrument_app(
+        self,
         app: Starlette,
         service_name: str,
-        enable_tracing: bool = True,
-        enable_metrics: bool = True,
+        enable_tracing: bool | None = None,
+        enable_metrics: bool | None = None,
     ):
         """Instruments a Starlette application with OpenTelemetry.
 
         Args:
-            app (Starlette): The Starlette application instance to be instrumented.
-            service_name (str): The name of the service for tracing and metrics.
-            enable_tracing (bool): Whether to enable tracing. Default is True.
-            enable_metrics (bool): Whether to enable metrics. Default is True.
+            app: The Starlette application instance to be instrumented.
+            service_name: The name of the service for tracing and metrics.
+            enable_tracing: Whether to enable tracing. Default is True.
+            enable_metrics: Whether to enable metrics. Default is True.
 
         Raises:
             RuntimeError: If there is an error setting up tracing or metrics providers.
         """
         try:
+            # Use class-level defaults if arguments are not provided
+            if enable_tracing is None:
+                enable_tracing = self.default_tracing
+
+            if enable_metrics is None:
+                enable_metrics = self.default_metrics
+
             # Set up OpenTelemetry resource with the service name.
             resource = Resource(attributes={SERVICE_NAME: service_name})
 

@@ -38,6 +38,7 @@ requirement.
 - [Basic Usage](#basic-usage)
 - [Installation](#installation)
 - [Development](#development)
+- [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Versioning](#versioning)
