@@ -12,6 +12,14 @@ cloud\_telemetry.main module
    :undoc-members:
    :show-inheritance:
 
+cloud\_telemetry.middleware module
+----------------------------------
+
+.. automodule:: cloud_telemetry.middleware
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

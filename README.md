@@ -38,6 +38,7 @@ requirement.
 - [Basic Usage](#basic-usage)
 - [Installation](#installation)
 - [Development](#development)
+- [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Versioning](#versioning)
@@ -139,6 +140,14 @@ make u
 
 > **Note**: This is not the complete list of commands, run `make` to find out if
 > more have been added.
+
+## Environment Variables
+
+**Cloud-Telemetry supports all environment variables** **supported by the
+OpenTelemetry SDK**
+
+For a complete list, check
+[here](https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html).
 
 ## Contributing
 
